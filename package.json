@@ -1,0 +1,40 @@
+{
+  "name": "jasonpollard-site",
+  "version": "0.1.0",
+  "private": true,
+  "engines": { "node": "24.x" },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test:unit": "node --import tsx --test tests/unit/*.test.tsx",
+    "test:e2e": "playwright test",
+    "test:no-js": "playwright test tests/e2e/no-js.spec.ts --project=no-js",
+    "test:static": "node --import tsx scripts/verify-static.ts",
+    "test:e2e:deployed": "node --import tsx scripts/run-deployed-e2e.ts",
+    "test:links:external": "node --import tsx scripts/check-external-links.ts",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:install": "playwright install chromium",
+    "zip:repo-review": "node --import tsx scripts/zip-repo-review.ts",
+    "verify:fast": "npm run lint && npm run typecheck",
+    "verify": "npm run verify:fast && npm run test:unit",
+    "verify:full": "npm run verify && npm run build && npm run test:static"
+  },
+  "dependencies": {
+    "next": "^16.2.10",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^16.2.10",
+    "tsx": "^4.23.0",
+    "typescript": "^5.7.3"
+  }
+}

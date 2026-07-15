@@ -1,0 +1,5 @@
+import { ImageResponse } from "next/og";
+export const alt = "Jason Pollard — engineering difficult systems with judgment";
+export const size = { width: 1200, height: 630 };
+export const contentType = "image/png";
+export default function Image() { return new ImageResponse(<div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 72, background: "#f4f1e9", color: "#112033", fontFamily: "sans-serif", borderTop: "14px solid #147d78" }}><div style={{ display: "flex", fontSize: 24, letterSpacing: 4, textTransform: "uppercase", color: "#147d78" }}>Jason Pollard · Software Engineer &amp; Architect</div><div style={{ display: "flex", maxWidth: 970, fontSize: 70, lineHeight: 1.08, fontWeight: 700 }}>I build, repair, modernize, and explain difficult software systems.</div><div style={{ display: "flex", justifyContent: "space-between", fontSize: 25 }}><span>20+ years · AI-enabled engineering</span><span>jasonpollard.com</span></div></div>, size); }

@@ -1,0 +1,10 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import test from "node:test";
+import { absoluteUrl, caseStudies, evidence, projects, siteConfig } from "../../content/site-content";
+
+test("site configuration generates canonical URLs and exposes the approved résumé", () => { assert.equal(siteConfig.url, "https://jasonpollard.com"); assert.equal(absoluteUrl("/work"), "https://jasonpollard.com/work"); assert.equal(siteConfig.resumeUrl, "/Jason-Pollard-Resume.pdf"); });
+test("public content keeps required evidence exact", () => { assert.equal(caseStudies.length, 4); assert.equal(evidence.length, 4); assert.ok(evidence.some((item) => item.value === "22 → 14")); assert.ok(evidence.some((item) => item.value === "15")); assert.deepEqual(evidence.find((item) => item.value === "30 → 1"), { value: "30 → 1", label: "unstable VB6 applications replaced by one .NET Windows Service, eliminating recurring server crashes" }); assert.equal(evidence.some((item) => item.label.includes("direct reports")), false); });
+test("only an intentionally public project has an external URL", () => { assert.equal(projects[0].href, null); assert.equal(projects[1].href, "https://arcadeghosts.org"); });
+test("public content excludes private paths and blocked topics", () => { const content = JSON.stringify({ caseStudies, evidence, projects, siteConfig }).toLowerCase(); for (const term of ["personal/", "rabbit hole", "salary", "therapy", "github.com"]) assert.equal(content.includes(term), false, `found blocked term: ${term}`); });
+test("critical microtype does not fall below 13px", () => { const css = readFileSync(new URL("../../app/globals.css", import.meta.url), "utf8"); const fontDeclarations = css.match(/font(?:-size)?:[^;}]+/g)?.join("\n") ?? ""; for (const size of [".7rem", ".72rem", ".75rem", ".76rem", ".78rem", ".8rem", "11px", "12px"]) assert.doesNotMatch(fontDeclarations, new RegExp(`(^|[^\\d.])${size.replace(".", "\\.")}`), `found undersized type token: ${size}`); });

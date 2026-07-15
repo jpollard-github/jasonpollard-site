@@ -1,1 +1,12 @@
 personal/
+node_modules/
+.next/
+out/
+playwright-report/
+test-results/
+repo-reviews/
+coverage/
+*.tsbuildinfo
+.env*
+!.env.example
+.DS_Store

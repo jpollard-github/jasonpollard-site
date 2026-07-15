@@ -1,0 +1,4 @@
+interface:
+  display_name: "Export JasonPollard Site Review"
+  short_description: "Zip this repository for external review"
+  default_prompt: "Use $jasonpollard-site-export-repo-review to export this repository to a review ZIP and reveal it in Finder."

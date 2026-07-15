@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import { PageIntro } from "@/components/PageIntro";
+import { projects } from "@/content/site-content";
+
+export const metadata: Metadata = { title: "Independent Projects", description: "Selected independent TypeScript, Node.js, and Next.js engineering projects.", alternates: { canonical: "/projects" } };
+export default function ProjectsPage() { return <><PageIntro eyebrow="Independent projects" title="Curiosity, turned into working systems."><p>Selected projects that reinforce the professional story: source-driven tooling, application architecture, product iteration, and deliberate use of AI.</p></PageIntro><div className="projects shell">{projects.map((project, i) => <article className="project" key={project.name}><div className="project-index">P-{String(i + 1).padStart(2, "0")}</div><div><p className="eyebrow">{project.label}</p><h2>{project.name}</h2><p className="project-description">{project.description}</p><ul>{project.details.map((item) => <li key={item}>{item}</li>)}</ul>{project.href && <a className="text-link" href={project.href} target="_blank" rel="noreferrer">Visit arcadeghosts.org <span aria-hidden="true">↗</span></a>}</div></article>)}</div></>; }
