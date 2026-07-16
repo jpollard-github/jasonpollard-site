@@ -312,12 +312,12 @@ Notes:
 
 Only after all tests pass:
 
-- [ ] Confirm `hello@jasonpollard.com` works from the deployed site's `mailto:` links.
-- [ ] Confirm the address in page content, metadata, and JSON-LD is correct.
-- [ ] Send a message using the website link.
-- [ ] Reply from the professional account.
-- [ ] Confirm the From address and signature one final time.
-- [ ] Mark the address operational in the deployment checklist.
+- [x] Confirm `hello@jasonpollard.com` works from the deployed site's `mailto:` links.
+- [x] Confirm the address in page content, metadata, and JSON-LD is correct.
+- [x] Send a message using the website link.
+- [x] Reply from the professional account.
+- [x] Confirm the From address and signature one final time.
+- [x] Mark the address operational in the deployment checklist.
 
 ---
 
