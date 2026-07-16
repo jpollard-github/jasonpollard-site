@@ -15,6 +15,18 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v5
+      - name: Assert private files are not tracked
+        shell: bash
+        run: |
+          tracked="$(git ls-files personal)"
+
+          if [ -n "$tracked" ]; then
+            echo "::error::Files under personal/ are tracked:"
+            printf '%s\n' "$tracked"
+            exit 1
+          fi
+
+          echo "Privacy boundary verified: personal/ contains no tracked files."
       - uses: actions/setup-node@v5
         with:
           node-version-file: .nvmrc
@@ -33,6 +45,7 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      - run: npm run build
       - run: npx playwright install chromium --with-deps
       - run: npm run test:e2e
       - if: ${{ !cancelled() }}
