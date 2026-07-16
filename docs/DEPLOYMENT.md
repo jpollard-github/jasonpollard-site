@@ -26,7 +26,7 @@ No deployment or DNS changes are automated by this repository.
 - [x] Open `/sitemap.xml` and `/robots.txt` on the production domain.
 - [x] Validate Person and WebSite JSON-LD with a structured-data testing tool.
 - [x] Test the Open Graph preview in at least one social preview tool.
-- [x] Test desktop and mobile navigation, keyboard focus, 404 behavior, and the external ArcadeGhoss link.
+- [x] Test desktop and mobile navigation, keyboard focus, 404 behavior, and the external ArcadeGhosts link.
 - [x] Complete `docs/EMAIL-SETUP.md` and verify `hello@jasonpollard.com` before announcing or broadly sharing the site.
 
 ## Preview outreach-readiness check
