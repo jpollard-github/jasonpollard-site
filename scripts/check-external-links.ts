@@ -1,4 +1,8 @@
-const destinations = ["https://arcadeghosts.org"];
+const destinations = [
+  "https://github.com/jpollard-github/spotify-history-analyzer",
+  "https://github.com/jpollard-github/mood-switcher",
+  "https://arcadeghosts.org",
+];
 
 async function main() {
   for (const destination of destinations) {

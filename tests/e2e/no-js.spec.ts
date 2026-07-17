@@ -18,7 +18,15 @@ test("public pages remain useful without JavaScript", async ({ page }) => {
 
   await page.goto("/projects");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Curiosity");
+  const projectHeadings = await page.locator(".project h2").allTextContents();
+  expect(projectHeadings).toEqual(["ArcadeGhosts", "Spotify History Analyzer", "Mood Switcher"]);
+  await expect(page.getByRole("heading", { name: "Spotify History Analyzer" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Mood Switcher" })).toBeVisible();
+  await expect(page.getByRole("link", { name: /View Spotify History Analyzer on GitHub/ })).toHaveAttribute("href", "https://github.com/jpollard-github/spotify-history-analyzer");
+  await expect(page.getByRole("link", { name: /View Mood Switcher on GitHub/ })).toHaveAttribute("href", "https://github.com/jpollard-github/mood-switcher");
   await expect(page.getByRole("link", { name: /Visit arcadeghosts\.org/ })).toHaveAttribute("href", "https://arcadeghosts.org");
+  await expect(page.locator(".project-image")).toHaveCount(1);
+  await expect(page.locator(".project-visual")).toHaveCount(1);
 });
 
 test("mobile pages and the 404 remain complete without JavaScript", async ({ page }) => {

@@ -20,6 +20,8 @@ test("deployed public routes, links, and metadata are healthy", async ({ page, r
   await expect(page.getByRole("link", { name: "Download résumé" })).toHaveAttribute("href", "/Jason-Pollard-Resume.pdf");
   await expect(page.locator('a[href="mailto:hello@jasonpollard.com"]')).toHaveCount(2);
   await page.goto("/projects");
+  await expect(page.getByRole("link", { name: /View Spotify History Analyzer on GitHub/ })).toHaveAttribute("href", "https://github.com/jpollard-github/spotify-history-analyzer");
+  await expect(page.getByRole("link", { name: /View Mood Switcher on GitHub/ })).toHaveAttribute("href", "https://github.com/jpollard-github/mood-switcher");
   await expect(page.getByRole("link", { name: /Visit arcadeghosts\.org/ })).toHaveAttribute("href", "https://arcadeghosts.org");
 
   const resume = await request.get("/Jason-Pollard-Resume.pdf");

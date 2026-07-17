@@ -63,20 +63,53 @@ export const caseStudies = [
 export const aiUses = ["Codebase inspection", "Story decomposition", "API-contract and data-path validation", "Feature-flagged spikes", "Security remediation", "Infrastructure automation", "Runbook and documentation generation"] as const;
 export const aiWorkflow = ["Inspect the relevant context", "State assumptions and open questions", "Decompose the work and its risk", "Generate or modify code", "Test behavior", "Inspect dependencies", "Review security and standards", "Assess maintainability and architectural fit", "Document changes and remaining uncertainty"] as const;
 
-export const projects = [
-  {
-    name: "BrandKit",
-    label: "Independent engineering project · Case study in progress",
-    description: "A source-driven TypeScript and Node.js system for producing consistent brand assets from version-controlled configuration.",
-    details: ["Reusable brand configuration and theme guardrails", "More than 20 generator families", "PNG, PDF, and HTML outputs", "Validation scripts, verification workflows, and review packets", "AI-assisted product design, implementation, visual iteration, and documentation"],
-    href: null,
-  },
+export type ProjectImage = {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+};
+
+export type Project = {
+  name: string;
+  label: string;
+  description: string;
+  details: readonly string[];
+  href: string;
+  linkLabel: string;
+  primaryImage?: ProjectImage;
+};
+
+export const projects: readonly Project[] = [
   {
     name: "ArcadeGhosts",
     label: "Independent engineering project · Deployed application",
-    description: "A TypeScript and Next.js application with a custom visual system, administrative workflows, and database-backed content.",
+    description: "A TypeScript and Next.js application with a custom visual system, administrative workflows, database-backed content, and AI-assisted product iteration.",
     details: ["Neon Postgres content storage", "Vercel Blob media storage", "Administrative interface", "Custom visual design", "AI-assisted product iteration"],
     href: "https://arcadeghosts.org",
+    linkLabel: "Visit arcadeghosts.org",
+    primaryImage: {
+      src: "/projects/arcadeghosts/home.png",
+      width: 1440,
+      height: 900,
+      alt: "ArcadeGhosts homepage with a neon roadside scene and personal site introduction",
+    },
+  },
+  {
+    name: "Spotify History Analyzer",
+    label: "Independent engineering project · Local data pipeline",
+    description: "A dependency-free local Node.js pipeline that validates and normalizes Spotify extended streaming-history exports, produces analytical datasets, and generates a static report while keeping personal source data local.",
+    details: ["JSON Schema validation and normalized stream-event model", "Chunked JSON, NDJSON, rankings, trends, and SQL-ready output", "Optional cached Last.fm enrichment with graceful fallback", "Static report covering listening patterns, eras, repeat behavior, and mood signals", "Synthetic demo fixture, focused tests, and GitHub Actions CI"],
+    href: "https://github.com/jpollard-github/spotify-history-analyzer",
+    linkLabel: "View Spotify History Analyzer on GitHub",
+  },
+  {
+    name: "Mood Switcher",
+    label: "Independent engineering project · Packaged VS Code extension",
+    description: "A configurable VS Code extension that adapts themes, workspace settings, commands, resources, and timed focus sessions to task-specific modes while preserving the user's prior workspace state.",
+    details: ["Activity-bar sidebar and visual dashboard", "Configurable modes, editor settings, commands, resources, and rituals", "Session timers, weekly analytics, import/export, and recommendation ranking", "Project-memory discovery and safe workspace restoration", "Six focused unit tests, reproducible VSIX packaging, and GitHub Actions CI"],
+    href: "https://github.com/jpollard-github/mood-switcher",
+    linkLabel: "View Mood Switcher on GitHub",
   },
 ] as const;
 

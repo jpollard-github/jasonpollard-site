@@ -98,4 +98,3 @@ Everything under `personal/` is private and ignored. It must never be imported, 
 
 - Add a real portrait only if Jason supplies and approves one.
 - Curate a GitHub profile before adding any GitHub link.
-- Expand BrandKit into a public-safe case study when its materials are ready.
